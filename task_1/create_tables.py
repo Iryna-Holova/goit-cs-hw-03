@@ -9,19 +9,23 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 
 def create_db():
-    with open('create_tables.sql', 'r') as file:
-        sql = file.read()
+    try:
+        with open('create_tables.sql', 'r') as file:
+            sql = file.read()
 
-    with psycopg2.connect(
-        database=DB_NAME,
-        host="localhost",
-        user=DB_USER,
-        password=DB_PASSWORD,
-        port=5432
-    ) as conn:
-        cursor = conn.cursor()
+        with psycopg2.connect(
+            database=DB_NAME,
+            host="localhost",
+            user=DB_USER,
+            password=DB_PASSWORD,
+            port=5432
+        ) as conn:
+            cursor = conn.cursor()
 
-        cursor.execute(sql)
+            cursor.execute(sql)
+            print("Database created successfully!")
+    except psycopg2.Error as e:
+        print("Error creating database:", e)
 
 
 if __name__ == "__main__":

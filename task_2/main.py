@@ -56,40 +56,43 @@ def delete_all_cats():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Perform operations on cats")
-    parser.add_argument(
-        "operation",
-        choices=[
-            "read_all",
-            "read",
-            "update",
-            "add_feature",
-            "delete",
-            "delete_all"
-        ],
-        help="Operation to perform"
-    )
-    parser.add_argument("--name", help="Name of the cat")
-    parser.add_argument("--age", type=int, help="New age of the cat")
-    parser.add_argument("--feature", help="New feature to add to the cat")
+    try:
+        parser = argparse.ArgumentParser(description="CRUD operations on cats")
+        parser.add_argument(
+            "operation",
+            choices=[
+                "read_all",
+                "read",
+                "update",
+                "add_feature",
+                "delete",
+                "delete_all"
+            ],
+            help="Operation to perform"
+        )
+        parser.add_argument("--name", help="Name of the cat")
+        parser.add_argument("--age", type=int, help="New age of the cat")
+        parser.add_argument("--feature", help="New feature to add to the cat")
 
-    args = parser.parse_args()
+        args = parser.parse_args()
 
-    match args.operation:
-        case "read_all":
-            read_all_cats()
-        case "read":
-            read_cat_by_name(args.name)
-        case "update":
-            update_cat_age(args.name, args.age)
-        case "add_feature":
-            add_feature_to_cat(args.name, args.feature)
-        case "delete":
-            delete_cat_by_name(args.name)
-        case "delete_all":
-            delete_all_cats()
-        case _:
-            print("Invalid operation. Please specify a valid operation.")
+        match args.operation:
+            case "read_all":
+                read_all_cats()
+            case "read":
+                read_cat_by_name(args.name)
+            case "update":
+                update_cat_age(args.name, args.age)
+            case "add_feature":
+                add_feature_to_cat(args.name, args.feature)
+            case "delete":
+                delete_cat_by_name(args.name)
+            case "delete_all":
+                delete_all_cats()
+            case _:
+                print("Invalid operation. Please specify a valid operation.")
+    except Exception as e:
+        print("An error occurred:", e)
 
 
 if __name__ == "__main__":

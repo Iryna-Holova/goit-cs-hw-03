@@ -1,17 +1,13 @@
 from pymongo import MongoClient
+from pymongo.errors import ConnectionFailure
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-
 MONGO_URI = os.getenv("MONGO_URI")
 MONGO_SERVER_API = os.getenv("MONGO_SERVER_API")
 
-client = MongoClient(MONGO_URI, server_api=ServerApi(MONGO_SERVER_API))
-
-db = client.cats
-collection = db.cats_collection
 
 cats = [
     {
@@ -36,4 +32,22 @@ cats = [
     }
 ]
 
-collection.insert_many(cats)
+
+def main():
+    try:
+        # Attempting to connect to the MongoDB database
+        client = MongoClient(MONGO_URI, server_api=ServerApi(MONGO_SERVER_API))
+        db = client.cats
+        collection = db.cats_collection
+        # Insert cats
+        collection.insert_many(cats)
+    except ConnectionFailure as e:
+        # Handling connection error
+        print("Connection error:", e)
+    except Exception as e:
+        # Handling other exceptions
+        print("Error:", e)
+
+
+if __name__ == "__main__":
+    main()

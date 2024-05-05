@@ -39,29 +39,36 @@ def truncate_tables(cursor):
 
 
 def insert_data_to_db(status, users, tasks) -> None:
-    with psycopg2.connect(
-        database=DB_NAME,
-        host="localhost",
-        user=DB_USER,
-        password=DB_PASSWORD,
-        port=5432
-    ) as conn:
-        cursor = conn.cursor()
-        truncate_tables(cursor)
+    try:
+        with psycopg2.connect(
+            database=DB_NAME,
+            host="localhost",
+            user=DB_USER,
+            password=DB_PASSWORD,
+            port=5432
+        ) as conn:
+            cursor = conn.cursor()
+            truncate_tables(cursor)
 
-        sql_to_status = """INSERT INTO status(name) VALUES (%s)"""
-        cursor.executemany(sql_to_status, status)
+            sql_to_status = """INSERT INTO status(name) VALUES (%s)"""
+            cursor.executemany(sql_to_status, status)
 
-        sql_to_users = """INSERT INTO users(fullname, email) VALUES (%s, %s)"""
-        cursor.executemany(sql_to_users, users)
+            sql_to_users = """INSERT INTO users(fullname, email)
+                                VALUES (%s, %s)"""
+            cursor.executemany(sql_to_users, users)
 
-        sql_to_tasks = """INSERT INTO tasks(
-                            title, description, status_id, user_id
-                        )
-                            VALUES (%s, %s, %s, %s)"""
-        cursor.executemany(sql_to_tasks, tasks)
+            sql_to_tasks = """INSERT INTO tasks(
+                                title, description, status_id, user_id
+                            )
+                                VALUES (%s, %s, %s, %s)"""
+            cursor.executemany(sql_to_tasks, tasks)
 
-        conn.commit()
+            conn.commit()
+            print("Data inserted successfully!")
+    except psycopg2.Error as e:
+        print("Error:", e)
+    except Exception as e:
+        print("An unexpected error occurred:", e)
 
 
 if __name__ == "__main__":
