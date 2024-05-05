@@ -3,6 +3,7 @@
 This repository contains the solutions to two tasks:
 
 [Task 1: Task Management System Database](task_1)
+
 [Task 2: MongoDB CRUD Operations with PyMongo](task_2)
 
 ## Task 1: Task Management System Database
