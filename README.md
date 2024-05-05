@@ -80,12 +80,12 @@ $ python3 insert.py
 
 4. Use the following command-line arguments to perform CRUD operations:
 
-`read_all`: Read all cat documents from the collection.
-`read --name <cat_name>`: Read information about a specific cat by name.
-`update --name <cat_name> --age <new_age>`: Update the age of a cat by name.
-`add_feature --name <cat_name> --feature <new_feature>`: Add a new feature to a cat by name.
-`delete --name <cat_name>`: Delete a cat document by name.
-`delete_all`: Delete all cat documents from the collection.
+- `read_all`: Read all cat documents from the collection.
+- `read --name <cat_name>`: Read information about a specific cat by name.
+- `update --name <cat_name> --age <new_age>`: Update the age of a cat by name.
+- `add_feature --name <cat_name> --feature <new_feature>`: Add a new feature to a cat by name.
+- `delete --name <cat_name>`: Delete a cat document by name.
+- `delete_all`: Delete all cat documents from the collection.
 
 ### Functionality:
 
