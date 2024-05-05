@@ -87,7 +87,7 @@ $ python3 insert.py
 - `delete --name <cat_name>`: Delete a cat document by name.
 - `delete_all`: Delete all cat documents from the collection.
 
-### Functionality:
+### Functionality
 
 The script connects to a MongoDB database and interacts with a collection of cat documents.
 It allows users to read, update, and delete cat documents, as well as add new features to existing cats.
