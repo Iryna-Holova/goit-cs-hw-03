@@ -24,7 +24,7 @@ The database consists of three main tables:
 
 The script `create_tables.py` is responsible for creating the necessary tables in the PostgreSQL database. It ensures that the email field in the users table and the name field in the status table are unique. Additionally, it sets up relationships between the tables to ensure cascading deletion of tasks when a user is removed.
 
-<img style="margin: 0 auto;" src="assets/diagram.png" alt="ER-diagram">
+<p align="center"><img width="452" height="407" src="assets/diagram.png" alt="ER-diagram"></p>
 
 ### Populating Tables
 
