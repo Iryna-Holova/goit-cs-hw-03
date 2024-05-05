@@ -24,7 +24,7 @@ The database consists of three main tables:
 
 The script `create_tables.py` is responsible for creating the necessary tables in the PostgreSQL database. It ensures that the email field in the users table and the name field in the status table are unique. Additionally, it sets up relationships between the tables to ensure cascading deletion of tasks when a user is removed.
 
-<img src="assets/diagram.png" alt="ER-diagram">
+<img style="text-align:center;" src="assets/diagram.png" alt="ER-diagram">
 
 ### Populating Tables
 
@@ -92,7 +92,7 @@ $ python3 insert.py
 The script connects to a MongoDB database and interacts with a collection of cat documents.
 It allows users to read, update, and delete cat documents, as well as add new features to existing cats.
 
-### Eample usage
+### Example usage
 
 ```bash
 $ python3 main.py read_all
